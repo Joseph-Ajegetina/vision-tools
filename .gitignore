@@ -1,2 +1,54 @@
-data/*
-**__pycache__/*
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+.conda/
+*.conda
+*.egg-info/
+*.egg
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Python cache
+*.pyo
+*.pyd
+*.pdb
+
+# VSCode / PyCharm configs
+.vscode/
+.idea/
+
+# Data files (optional – uncomment if you don’t want to push datasets)
+# *.csv
+# *.tsv
+# *.json
+# *.h5
+# *.pt
+# *.pth
+# *.npz
+# *.npy
+
+# Torch model checkpoints
+*.pt
+*.pth
+
+# Logs and outputs
+*.log
+logs/
+wandb/
+tensorboard/
+lightning_logs/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Jupyter runtime
+*.local/share/jupyter/runtime/
