@@ -1,0 +1,38 @@
+# Core ML and Data Science
+torch>=1.11.0
+torchvision>=0.12.0
+numpy>=1.21.0
+matplotlib>=3.4.0
+scikit-learn>=1.0.0
+pandas>=1.3.0
+seaborn>=0.11.0
+
+# Data Handling and Utilities
+tqdm>=4.60.0
+pillow>=8.0.0
+opencv-python-headless>=4.5.0
+
+# Google Drive API
+gdown>=4.0.0
+
+# API and Deployment
+fastapi>=0.70.0
+uvicorn>=0.15.0
+pydantic>=1.8.0
+python-multipart>=0.0.5
+
+# Model Export and Deployment
+onnx>=1.10.0
+onnxruntime>=1.10.0
+
+# Development and Testing
+pytest>=6.0.0
+jupyter>=1.0.0
+ipywidgets>=7.6.0
+
+# Visualization and Monitoring
+tensorboard>=2.8.0
+livelossplot>=0.5.0
+
+# Configuration Management
+pyyaml>=6.0

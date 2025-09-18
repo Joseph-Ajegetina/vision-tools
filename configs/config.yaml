@@ -1,0 +1,88 @@
+# CINIC-10 MLP vs CNN Comparison Configuration
+
+# Dataset Configuration
+dataset:
+  name: "CINIC-10"
+  num_classes: 10
+  image_size: 32
+  channels: 3
+  google_drive_id: "1s5fGcJNGwUbujBxtTXcMN6YAYSVZHvAC"  # Replace with actual Google Drive file ID
+  data_dir: "./data/cinic10"
+
+# Data Loading
+data_loader:
+  batch_size: 128
+  num_workers: 4
+  validation_split: 0.2
+  test_split: 0.1
+  shuffle: true
+  pin_memory: true
+
+# Data Augmentation
+augmentation:
+  train:
+    horizontal_flip: true
+    random_crop: true
+    padding: 4
+    normalize: true
+  test:
+    normalize: true
+
+# Model Configurations
+models:
+  mlp:
+    hidden_layers: [512, 256, 128]
+    dropout: 0.5
+    activation: "relu"
+
+  cnn:
+    conv_layers:
+      - {out_channels: 32, kernel_size: 3, padding: 1}
+      - {out_channels: 64, kernel_size: 3, padding: 1}
+      - {out_channels: 128, kernel_size: 3, padding: 1}
+    pool_size: 2
+    fc_layers: [256, 128]
+    dropout: 0.5
+    batch_norm: true
+
+# Training Configuration
+training:
+  epochs: 100
+  learning_rate: 0.001
+  weight_decay: 1e-4
+  optimizer: "adam"
+  scheduler: "cosine"
+  early_stopping:
+    patience: 10
+    min_delta: 0.001
+
+# Evaluation
+evaluation:
+  metrics: ["accuracy", "precision", "recall", "f1"]
+  confusion_matrix: true
+  classification_report: true
+
+# Export Configuration
+export:
+  onnx:
+    opset_version: 11
+    dynamic_axes: {"input": {0: "batch_size"}}
+  torchscript:
+    method: "trace"  # or "script"
+
+# API Configuration
+api:
+  host: "0.0.0.0"
+  port: 8000
+  model_path: "./models/best_model.onnx"
+  max_file_size: 10485760  # 10MB
+
+# Logging and Visualization
+logging:
+  level: "INFO"
+  tensorboard_dir: "./runs"
+  save_plots: true
+  plot_dir: "./plots"
+
+# Reproducibility
+seed: 42
