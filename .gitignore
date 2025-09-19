@@ -26,7 +26,9 @@ env/
 .idea/
 
 # Data files (optional – uncomment if you don’t want to push datasets)
-# *.csv
+*.csv
+*.zip
+*.png
 # *.tsv
 # *.json
 # *.h5
@@ -36,8 +38,8 @@ env/
 # *.npy
 
 # Torch model checkpoints
-*.pt
-*.pth
+# *.pt
+# *.pth
 
 # Logs and outputs
 *.log
