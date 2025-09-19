@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 import numpy as np
 from collections import defaultdict
+from livelossplot import PlotLosses
 import yaml
 
 logger = logging.getLogger(__name__)
@@ -289,7 +290,7 @@ class ModelTrainer:
         logger.info(f"Scheduler: {self.scheduler.__class__.__name__ if self.scheduler else 'None'}")
 
         start_time = time.time()
-
+        liveloss = PlotLosses()
         for epoch in range(self.epochs):
             self.current_epoch = epoch
 
@@ -353,6 +354,12 @@ class ModelTrainer:
                     f"(no improvement for {self.early_stop_patience} epochs)"
                 )
                 break
+            logs = {
+            'loss': train_loss, 'val_loss': val_loss,
+            'accuracy': train_acc, 'val_accuracy': val_acc
+            }
+            liveloss.update(logs)
+            liveloss.send()
 
         # Training completed
         total_time = time.time() - start_time

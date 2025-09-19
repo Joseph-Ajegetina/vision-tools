@@ -1,0 +1,38 @@
+================================================================================
+CINIC-10 MODEL EVALUATION REPORT
+================================================================================
+
+MODEL: MLP
+----------------------------------------
+Overall Accuracy:     33.19%
+Top-2 Accuracy:       54.59%
+Top-3 Accuracy:       67.10%
+Macro F1-Score:       28.53%
+Weighted F1-Score:    28.53%
+Model Parameters:     1,738,890
+
+MODEL: CNN
+----------------------------------------
+Overall Accuracy:     57.35%
+Top-2 Accuracy:       77.97%
+Top-3 Accuracy:       86.97%
+Macro F1-Score:       56.74%
+Weighted F1-Score:    56.74%
+Model Parameters:     160,906
+
+MODEL COMPARISON
+----------------------------------------
+CNN vs MLP:
+  Accuracy Improvement:    +24.16% (+72.8%)
+  Macro F1 Improvement:    +28.21% (+98.9%)
+  Parameter Ratio:         0.1x
+
+PER-CLASS ANALYSIS
+----------------------------------------
+MLP:
+  Best Class:  horse (60.1%)
+  Worst Class: deer (1.0%)
+
+CNN:
+  Best Class:  frog (78.2%)
+  Worst Class: cat (31.0%)
