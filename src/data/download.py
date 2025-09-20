@@ -20,7 +20,7 @@ class DataDownloader:
     data loaders.
     """
 
-    def __init__(self, data_dir: str = "../data", google_drive_id: Optional[str] = None):
+    def __init__(self, data_dir: str = "../data/cinic10", google_drive_id: Optional[str] = None):
         """
         Initialize the data downloader.
 
