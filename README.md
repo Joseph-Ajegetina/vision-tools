@@ -42,12 +42,10 @@ cinic10-mlp-cnn-comparison/
 │   │   └── export.py            # Model export for deployment
 │   └── api/
 │       └── fastapi_app.py       # Production API server
-├── notebooks/                   # Jupyter notebooks for experiments
 ├── configs/
 │   └── config.yaml             # Configuration parameters
 ├── requirements.txt            # Python dependencies
 ├── README.md                   # This file
-└── CLAUDE.md                   # Claude Code guidance
 ```
 
 ## 📋 Requirements
@@ -79,39 +77,7 @@ conda activate cinic10_comparison
 pip install -r requirements.txt
 ```
 
-### 2. Dataset Setup (Automatic!)
-
-**🚀 Quick Setup (Recommended):**
-```python
-from src.utils.setup import setup_env
-
-# This automatically downloads CINIC-10 and sets up everything!
-setup_info = setup_env()
-print("✅ Ready to train!")
-```
-
-**📋 Manual Setup (if needed):**
-```python
-from src.data.download import DataDownloader
-
-# Initialize downloader
-downloader = DataDownloader(data_dir="./data")
-
-# Setup dataset with Google Drive URL (automatically extracts file ID)
-google_drive_url = "https://drive.google.com/file/d/1s5fGcJNGwUbujBxtTXcMN6YAYSVZHvAC/view?usp=drive_link"
-success = downloader.setup_dataset(google_drive_id=google_drive_url)
-
-if success:
-    print("Dataset ready!")
-```
-
-**🧪 Test Setup:**
-```bash
-# Test that everything works
-python test_setup.py
-```
-
-### 3. Train Models
+### 2. Train Models
 
 ```python
 import torch
@@ -162,7 +128,7 @@ cnn_history = cnn_trainer.train(
 )
 ```
 
-### 4. Evaluate and Compare Models
+### 3. Evaluate and Compare Models
 
 ```python
 from src.training.evaluator import ModelEvaluator
@@ -189,7 +155,7 @@ evaluator.plot_confusion_matrix(cnn_results)
 evaluator.plot_model_comparison(comparison)
 ```
 
-### 5. Export Models for Deployment
+### 4. Export Models for Deployment
 
 ```python
 from src.utils.export import ModelExporter
@@ -201,7 +167,7 @@ mlp_exports = exporter.export_all_formats(mlp_model, "MLP")
 cnn_exports = exporter.export_all_formats(cnn_model, "CNN")
 ```
 
-### 6. Start API Server
+### . Start API Server
 
 ```bash
 # Start FastAPI server
@@ -211,44 +177,6 @@ python fastapi_app.py
 # Or using uvicorn directly
 uvicorn fastapi_app:app --host 0.0.0.0 --port 8000 --reload
 ```
-
-## 🧠 Mathematical Foundation
-
-### Multi-Layer Perceptron (MLP)
-
-**Architecture**: Fully connected layers with ReLU activation
-```
-Input (3072) → Hidden₁ (512) → Hidden₂ (256) → Hidden₃ (128) → Output (10)
-```
-
-**Mathematical Operations**:
-- Forward pass: `y = f(Wx + b)` where `f` is ReLU activation
-- ReLU activation: `f(x) = max(0, x)`
-- Loss function: `CrossEntropyLoss = -Σ(y_true * log(y_pred))`
-- Backpropagation: `∂L/∂w = gradient computation for weight updates`
-
-**Key Characteristics**:
-- Treats images as flattened vectors (loses spatial information)
-- Uses dropout for regularization
-- Xavier initialization for stable training
-
-### Convolutional Neural Network (CNN)
-
-**Architecture**: Convolutional blocks + fully connected layers
-```
-Input (3×32×32) → Conv₁ (32) → Conv₂ (64) → Conv₃ (128) → FC (256) → FC (128) → Output (10)
-```
-
-**Mathematical Operations**:
-- Convolution: `output[i,j] = Σ(input[i+m,j+n] * kernel[m,n])`
-- Max pooling: `output[i,j] = max(input[region])`
-- Batch normalization: `y = γ * (x - μ) / σ + β`
-
-**Key Characteristics**:
-- Preserves spatial relationships in images
-- Uses batch normalization for training stability
-- He initialization optimized for ReLU networks
-- Adaptive pooling for consistent feature map sizes
 
 ## 📊 Performance Metrics
 
@@ -342,38 +270,6 @@ Based on the architectural differences, we expect:
 3. **Feature Learning**: CNNs learn hierarchical features (edges → textures → objects)
 4. **Generalization**: CNNs typically generalize better to new images
 
-## 📈 Usage Examples
-
-### Training from Scratch
-
-```python
-# Complete training pipeline
-from src.models.mlp import MLP
-from src.models.cnn import CNN
-from src.data.dataset import CINIC10DataModule
-from src.training.trainer import ModelTrainer
-from src.training.evaluator import ModelEvaluator
-
-# Setup data
-data_module = CINIC10DataModule()
-data_loaders = data_module.setup_data_loaders()
-
-# Initialize models
-mlp = MLP(num_classes=10)
-cnn = CNN(num_classes=10)
-
-# Train and evaluate
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-for model, name in [(mlp, "MLP"), (cnn, "CNN")]:
-    trainer = ModelTrainer(model, device, config, f"{name}_experiment")
-    trainer.train(data_loaders['train'], data_loaders['val'])
-
-    evaluator = ModelEvaluator(data_module.class_names, device)
-    results = evaluator.evaluate_model(model, data_loaders['test'], name)
-    print(f"{name} Results: {results['overall_metrics']['accuracy']:.2f}% accuracy")
-```
-
 ### Custom Configuration
 
 ```yaml
@@ -402,24 +298,9 @@ training:
 3. Make changes and test thoroughly
 4. Submit a pull request with detailed description
 
-## 📄 License
-
-This project is created for educational purposes as part of the Ashesi University Deep Learning course.
 
 ## 🔗 References
 
 - CINIC-10 Dataset: [GitHub Repository](https://github.com/BayesWatch/cinic-10)
 - PyTorch Documentation: [pytorch.org](https://pytorch.org/docs/)
 - FastAPI Documentation: [fastapi.tiangolo.com](https://fastapi.tiangolo.com/)
-
-## 📞 Support
-
-For questions or issues:
-1. Check the documentation in `CLAUDE.md`
-2. Review the example notebooks
-3. Check the API documentation at `http://localhost:8000/docs`
-
----
-
-**Ashesi University - ICS553 Deep Learning - PROSIT 1**
-*Comparing MLP and CNN Architectures for Image Classification*
