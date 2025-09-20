@@ -28,13 +28,13 @@
       "verification": {
         "verified": true,
         "outputs_match": true,
-        "max_difference": 9.5367431640625e-07,
-        "mean_difference": 3.337860050578456e-07,
+        "max_difference": 1.9073486328125e-06,
+        "mean_difference": 1.0363758065068396e-06,
         "tolerance": 1e-05
       },
       "model_info": {
         "producer_name": "pytorch",
-        "producer_version": "1.11.0",
+        "producer_version": "2.6.0",
         "opset_version": 11,
         "inputs": [
           {
@@ -58,9 +58,9 @@
             "type": 1
           }
         ],
-        "num_nodes": 21
+        "num_nodes": 22
       },
-      "file_size_mb": 0.614476203918457
+      "file_size_mb": 0.6151762008666992
     },
     "torchscript": {
       "format": "TorchScript",
@@ -79,13 +79,13 @@
         "mean_difference": 0.0,
         "tolerance": 1e-05
       },
-      "file_size_mb": 0.6539888381958008
+      "file_size_mb": 0.6560077667236328
     },
     "state_dict": {
       "format": "PyTorch State Dict",
       "export_path": "exported_models/CNN_state_dict.pth",
       "includes_metadata": true,
-      "file_size_mb": 0.6238594055175781
+      "file_size_mb": 0.6249675750732422
     }
   }
 }

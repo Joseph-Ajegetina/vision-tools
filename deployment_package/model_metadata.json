@@ -60,13 +60,13 @@
           "verification": {
             "verified": true,
             "outputs_match": true,
-            "max_difference": 2.9802322387695312e-08,
-            "mean_difference": 1.5646218542997303e-08,
+            "max_difference": 1.7881393432617188e-07,
+            "mean_difference": 9.387731836341118e-08,
             "tolerance": 1e-05
           },
           "model_info": {
             "producer_name": "pytorch",
-            "producer_version": "1.11.0",
+            "producer_version": "2.6.0",
             "opset_version": 11,
             "inputs": [
               {
@@ -90,9 +90,9 @@
                 "type": 1
               }
             ],
-            "num_nodes": 13
+            "num_nodes": 14
           },
-          "file_size_mb": 6.634669303894043
+          "file_size_mb": 6.634984970092773
         },
         "torchscript": {
           "format": "TorchScript",
@@ -111,13 +111,13 @@
             "mean_difference": 0.0,
             "tolerance": 1e-05
           },
-          "file_size_mb": 6.648338317871094
+          "file_size_mb": 6.650254249572754
         },
         "state_dict": {
           "format": "PyTorch State Dict",
           "export_path": "exported_models/MLP_state_dict.pth",
           "includes_metadata": true,
-          "file_size_mb": 6.636122703552246
+          "file_size_mb": 6.637104034423828
         }
       }
     },
@@ -151,13 +151,13 @@
           "verification": {
             "verified": true,
             "outputs_match": true,
-            "max_difference": 9.5367431640625e-07,
-            "mean_difference": 3.337860050578456e-07,
+            "max_difference": 1.9073486328125e-06,
+            "mean_difference": 1.0363758065068396e-06,
             "tolerance": 1e-05
           },
           "model_info": {
             "producer_name": "pytorch",
-            "producer_version": "1.11.0",
+            "producer_version": "2.6.0",
             "opset_version": 11,
             "inputs": [
               {
@@ -181,9 +181,9 @@
                 "type": 1
               }
             ],
-            "num_nodes": 21
+            "num_nodes": 22
           },
-          "file_size_mb": 0.614476203918457
+          "file_size_mb": 0.6151762008666992
         },
         "torchscript": {
           "format": "TorchScript",
@@ -202,13 +202,13 @@
             "mean_difference": 0.0,
             "tolerance": 1e-05
           },
-          "file_size_mb": 0.6539888381958008
+          "file_size_mb": 0.6560077667236328
         },
         "state_dict": {
           "format": "PyTorch State Dict",
           "export_path": "exported_models/CNN_state_dict.pth",
           "includes_metadata": true,
-          "file_size_mb": 0.6238594055175781
+          "file_size_mb": 0.6249675750732422
         }
       }
     }
