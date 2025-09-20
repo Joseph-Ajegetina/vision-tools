@@ -77,13 +77,10 @@ conda activate cinic10_comparison
 pip install -r requirements.txt
 ```
 
-**You can use the [Walkthrough Notebook](./comprehensive_walkthrough.ipynb) to go through the process**
-
-**Equally you can run these code snippets following to go through the various stages from data loading to results**
-
 ### 2. Dataset Setup (Automatic!)
 
 **🚀 Quick Setup (Recommended):**
+In the vision-tools folder run **python** in the terminal and run code below to download the data
 ```python
 from src.utils.setup import setup_env
 
@@ -91,6 +88,10 @@ from src.utils.setup import setup_env
 setup_info = setup_env()
 print("✅ Ready to train!")
 ```
+
+**You can use the [Walkthrough Notebook](./comprehensive_walkthrough.ipynb) to go through the process after running the `automatic setup`**
+
+**Equally you can run these code snippets following to go through the various stages from data loading to results**
 
 **📋 Manual Setup (if needed):**
 ```python
