@@ -20,7 +20,7 @@ class DataDownloader:
     data loaders.
     """
 
-    def __init__(self, data_dir: str = "../data/cinic10", google_drive_id: Optional[str] = None):
+    def __init__(self, data_dir: str = "../data", google_drive_id: Optional[str] = None):
         """
         Initialize the data downloader.
 
@@ -139,7 +139,7 @@ class DataDownloader:
             logger.info(f"Extracting dataset to {self.dataset_dir}")
 
             with zipfile.ZipFile(self.zip_path, 'r') as zip_ref:
-                zip_ref.extractall(self.data_dir)
+                zip_ref.extractall(self.dataset_dir)
 
             logger.info("Dataset extracted successfully")
             return True
