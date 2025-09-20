@@ -77,7 +77,44 @@ conda activate cinic10_comparison
 pip install -r requirements.txt
 ```
 
-### 2. Train Models
+**You can use the [Walkthrough Notebook](./comprehensive_walkthrough.ipynb) to go through the process**
+
+**Equally you can run these code snippets following to go through the various stages from data loading to results**
+
+### 2. Dataset Setup (Automatic!)
+
+**🚀 Quick Setup (Recommended):**
+```python
+from src.utils.setup import setup_env
+
+# This automatically downloads CINIC-10 and sets up everything!
+setup_info = setup_env()
+print("✅ Ready to train!")
+```
+
+**📋 Manual Setup (if needed):**
+```python
+from src.data.download import DataDownloader
+
+# Initialize downloader
+downloader = DataDownloader(data_dir="./data")
+
+# Setup dataset with Google Drive URL (automatically extracts file ID)
+google_drive_url = "https://drive.google.com/file/d/1s5fGcJNGwUbujBxtTXcMN6YAYSVZHvAC/view?usp=drive_link"
+success = downloader.setup_dataset(google_drive_id=google_drive_url)
+
+if success:
+    print("Dataset ready!")
+```
+
+**🧪 Test Setup:**
+```bash
+# Test that everything works
+python test_setup.py
+```
+
+
+### 3. Train Models
 
 ```python
 import torch
@@ -128,7 +165,7 @@ cnn_history = cnn_trainer.train(
 )
 ```
 
-### 3. Evaluate and Compare Models
+### 4. Evaluate and Compare Models
 
 ```python
 from src.training.evaluator import ModelEvaluator
@@ -155,7 +192,7 @@ evaluator.plot_confusion_matrix(cnn_results)
 evaluator.plot_model_comparison(comparison)
 ```
 
-### 4. Export Models for Deployment
+### 5. Export Models for Deployment
 
 ```python
 from src.utils.export import ModelExporter
